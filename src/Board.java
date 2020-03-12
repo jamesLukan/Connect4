@@ -43,7 +43,7 @@ public class Board {
         //makes a move on the board - changes a position to "token value"
         public boolean makeMove( int col, String token){
             for(int i=7; i>=0; i--){
-                if(grid[i][col].equals("0")){
+                if(grid[i][col].equals("-")){
                     grid[i][col]=token;
                     return true;
                 }
@@ -55,18 +55,21 @@ public class Board {
 
 
 
+
         //win check routine with basic "algorithm" for now
         //any move at 0,0 ends game
-        public boolean checkWin () {
-            for (int col = 0; col < size; col++) {
-                if (grid[0][0] != "0") {
-                    return false;
+        public boolean checkWin() {
+            for (int i = 0; i <= 7; i++) {
+                for (int j = 0; j <= 4; j++) {
+                    if (grid[i][j].equals("X") && grid[i][j + 1].equals("X") && grid[i][j + 2].equals("X") && grid[i][j + 3].equals("X")) {
+                        return true;
+                    }
+
+
                 }
 
-
-
             }
-            return true;
+            return false;
         }
 
 }
